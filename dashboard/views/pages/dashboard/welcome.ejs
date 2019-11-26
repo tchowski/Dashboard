@@ -1,0 +1,78 @@
+<div id="welcome">
+  <section class="hero is-medium is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Welcome
+        </h1>
+        <h2 class="subtitle">
+          On your personal dashboard
+        </h2>
+      </div>
+    </div>
+  </section>
+  <div style="margin-top: 8%; margin-bottom: 5%;" class="container is-fullhd">
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Service:</p>
+          <p class="subtitle">Weather - Exchange - YouTube</p>
+          <select style="width: -webkit-fill-available;" @change="onChange($event)" v-model="selectedService">
+            <option disabled value="">Choisissez</option>
+            <option value="weather">Weather</option>
+            <option value="exchange">Exchange</option>
+            <option value="youtube">Youtube</option>
+          </select>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Widget</p>
+          <p class="subtitle">Features</p>
+          <select style="width: -webkit-fill-available;" v-model="selectedWidget">
+            <option disabled value="">Choisissez</option>
+            <option v-for="features of arraySelectedWidget" v-bind:value="features">{{features}}</option>
+          </select>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Time</p>
+          <p class="subtitle">Refresh your widget</p>
+          <input type="number" v-model="refresh" style="width: -webkit-fill-available;" placeholder="Time in ms" name=""
+            id="">
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title">Add it</p>
+          <p class="subtitle">To your dashboard</p>
+          <div class="content">
+            <button v-on:click="insertWidget()" class="button is-medium is-fullwidth">OK</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div id="components-demo">
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <template v-for="(appendHTML, index) in appendHTMLarray">
+        <exchange-widget v-if="appendHTML == 'Full Widget - Exchange'"></exchange-widget>
+        <exchange-currency v-if="appendHTML == 'Display exchange currency'"></exchange-currency>
+        <weather-widget v-if="appendHTML == 'Full Widget - Weather'"></weather-widget>
+        <weather-temperature v-if="appendHTML == 'Display temperature for a city'"></weather-temperature>
+        <weather-humidity v-if="appendHTML == 'Display humidity for a city'"></weather-humidity>
+        <weather-pressure v-if="appendHTML == 'Display pressure for a city'"></weather-pressure>
+        <youtube-widget v-if="appendHTML == 'Full Widget - YouTube'"></youtube-widget>
+        <youtube-comments v-if="appendHTML == 'Display comments on specific video'"></youtube-comments>
+        <youtube-subscribers v-if="appendHTML == 'Display subscribers on specific video'"></youtube-subscribers>
+        <youtube-views v-if="appendHTML == 'Display views on specific video'"></youtube-views>
+      </template>
+    </div>
+  </div>
+  <img src="/images/client.jpg" style="width: 100%; margin-top: 20%;" class="img-fluid" alt="Responsive image">
+  <!-- <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %> -->

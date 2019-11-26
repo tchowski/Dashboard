@@ -1,0 +1,7 @@
+version: '3'
+services:
+  app:
+    restart: on-failure
+    build: dashboard
+    ports:
+      - '8080:8080'
