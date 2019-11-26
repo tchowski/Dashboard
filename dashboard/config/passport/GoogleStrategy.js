@@ -18,6 +18,6 @@ var verifyHandler = function (accessToken, refreshToken, profile, cb, done) {
 passport.use(new GoogleStrategy({
   clientID: '89473903059-r5p5onuk78sbc6d2unn4b5u6qutf28fh.apps.googleusercontent.com',
   clientSecret: 'nfsUeeTJH0OBWrgzkwBCR1kb',
-  callbackURL: "http://localhost:8080/api/v1/auth/google/callback",
+  callbackURL: "http://dashboard.ptit-nuage.fr/api/v1/auth/facebook/callback",
   passReqToCallback: true
 }, verifyHandler));
